@@ -1,0 +1,39 @@
+// "static void main" must be defined in a public class.
+public class Main {
+    public static void main(String[] args) {
+        int[] SumofTwo = new int[] {2,11,7,15};
+        int target = 9;
+        int[] out = Sums(SumofTwo,target);
+        System.out.println("[" + out[0]+"," + out[1]+"]");
+    }
+    public static int[] Sums(int[] nums,int target){
+      /*  for (int i =0; i< nums.length; i++){
+            for (int j = i+1; j < nums.length; j++){
+                if (nums[j]+ nums[i] == target){
+                    return new int[]{i,j};
+                }
+            }
+        }
+        return null;
+    }
+    */
+            Map< Integer, Integer> Sum = new HashMap<>();
+           //initialize
+            for (int i = 0; i < nums.length; i++){
+                Sum.put(nums[i],i);
+            }
+            // find the index
+            for (int j = 0; j < nums.length; j++){
+                int result = target - nums[j];
+                int index = Sum.get(result);
+                if (Sum.containsKey(result) && index != j){
+                    return new int[] {j,index};
+                }   
+            }
+            return null;
+}
+}
+
+
+    
+
